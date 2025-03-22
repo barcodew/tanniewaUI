@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Tanniewa Putra - @yield('tittle')</title>
+    <title>Tanniewa Putra - @yield('title')</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -28,14 +28,29 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
 
-    <!-- =======================================================
-  * Template Name: Techie
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navmenu ul li {
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: slideDown 1.5s forwards;
+        }
+
+        .navmenu ul li.show {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body class="index-page">
@@ -43,19 +58,28 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-            <a href="/" class="logo d-flex align-items-center me-auto">
+            <a href="/" class="logo d-flex align-items-center me-auto logo-tanniewa">
                 <img src="assets/img/LogoTanniewa.png" alt="logo-tanniewa">
                 <h1 class="sitename">Tanniewa Putra</h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#hero" class="active">Beranda</a></li>
+                    <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="#about">Tentang Kami</a></li>
+                            <li><a href="#sejarah">Sejarah</a></li>
+                            <li><a href="#visi">Visi Misi</a></li>
+                            <li><a href="#team">Tim</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#services">Layanan</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li class="dropdown"><a href="#"><span>Dropdown</span> <i
+                    <li><a href="#team">Karir</a></li>
+
+                    <li class="dropdown"><a href="#"><span>Lainnya</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="#">Dropdown 1</a></li>
@@ -74,12 +98,12 @@
                             <li><a href="#">Dropdown 4</a></li>
                         </ul>
                     </li>
-                    <li><a href="#contact">Contact</a></li>
+                    {{-- <li><a href="#contact">Contact</a></li> --}}
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="#about">Get Started</a>
+            <a class="btn-getstarted" href="#about">Pesan</a>
 
         </div>
     </header>
@@ -120,6 +144,18 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuItems = document.querySelectorAll('.navmenu ul li');
+
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('show'); // Tambahkan kelas show untuk memulai animasi
+                }, index * 300); // Delay 300ms untuk setiap item
+            });
+        });
+    </script>
 
 </body>
 
